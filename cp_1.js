@@ -55,3 +55,13 @@ function displayProducts(products) {
   });
 }
 
+// Step 6: Reusable error handler
+
+function handleError(error) {
+  console.error(`An error occurred: ${error.message}`);
+}
+
+// Step 7: Call both functions
+
+fetchProductsThen();
+fetchProductsAsync();
