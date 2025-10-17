@@ -15,3 +15,16 @@ function fetchProductsThen() {
       console.error("An error occurred:", error.message);
     });
 }
+
+//Step 4: the Async and await
+
+async function fetchProductsAsync() {
+  try {
+    const response = await fetch("https://www.course-api.com/javascript-store-products");
+    if (!response.ok) throw new Error("Failed to fetch products");
+    const products = await response.json();
+    displayProducts(products);
+  } catch (error) {
+    handleError(error);
+  }
+}
