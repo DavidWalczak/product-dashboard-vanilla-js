@@ -28,3 +28,30 @@ async function fetchProductsAsync() {
     handleError(error);
   }
 }
+
+// Step 5: Display the first 5 products
+
+function displayProducts(products) {
+  const container = document.querySelector("#product-container");
+  container.innerHTML = ""; // Clear any existing content
+
+  products.slice(0, 5).forEach(product => {
+    const { name, price, image } = product.fields;
+    const imageUrl = image[0].url;
+    const priceInDollars = (price / 100).toFixed(2);
+
+    const card = document.createElement("div");
+    card.classList.add("product-card");
+
+    card.innerHTML = `
+      <img src="${imageUrl}" alt="${name}">
+      <div class="product-info">
+        <h3>${name}</h3>
+        <p>$${priceInDollars}</p>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
